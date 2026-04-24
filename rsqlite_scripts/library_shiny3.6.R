@@ -101,7 +101,9 @@ ui <- tagList(
           sidebarPanel(
             selectInput(
               inputId = "return_filter_patron", 
-              label = "Select Patron:", choices = NULL),
+              label = "Select Patron:", 
+              choices = NULL
+            ),
             actionButton(
               inputId = "return_btn2", 
               label = "Mark Book as Returned", 
@@ -210,14 +212,14 @@ server <- function(input, output, session) {
     rv$patrons <- dbGetQuery(
       db,
       "SELECT 
-       Patron_id, 
-       First_Name, 
-       Last_Name, 
-       Phone_Number, 
-       Email_Address
-     FROM 
-       patron
-     ORDER BY 
+         Patron_id, 
+         First_Name, 
+         Last_Name, 
+         Phone_Number, 
+         Email_Address
+       FROM 
+         patron
+      ORDER BY 
        Last_Name, 
        First_Name"
     )
